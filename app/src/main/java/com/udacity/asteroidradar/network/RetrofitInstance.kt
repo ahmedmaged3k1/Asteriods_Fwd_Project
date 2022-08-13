@@ -25,7 +25,7 @@ class RetrofitInstance {
             retrofit.create(ApiService::class.java)
         }
 
-        fun getNewsApi(): ApiService {
+        fun getAsteroidsApi(): ApiService {
             return api
         }
     }
