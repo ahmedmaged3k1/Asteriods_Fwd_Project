@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -21,7 +24,10 @@ class MainFragment : Fragment() {
         binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.getNearAsteroids("2015-09-05","2015-09-6")
 
+        }
         return binding.root
     }
 
