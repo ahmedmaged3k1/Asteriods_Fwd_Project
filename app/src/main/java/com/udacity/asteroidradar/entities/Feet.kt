@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Meters (
+data class Feet (
 
     @SerializedName("estimated_diameter_min" ) var estimatedDiameterMin : Double? = null,
     @SerializedName("estimated_diameter_max" ) var estimatedDiameterMax : Double? = null
