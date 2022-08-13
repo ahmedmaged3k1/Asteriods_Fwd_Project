@@ -1,5 +1,7 @@
 package com.udacity.asteroidradar.main
 
+import AsteroidSample
+import StartDate
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
@@ -11,22 +13,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MainViewModel : ViewModel() {
-    private  var asteroidsList =listOf(Asteroid(1,"asdas","sad",2.0,3.0,2.9,3.6,true))
+    //listOf(Asteroid(1,"asdas","sad",2.0,3.0,2.9,3.6,true))
+    private  var asteroidsList = emptyList<StartDate>()
 
 
-     suspend fun getNearAsteroids(endData: String,startData: String): List<Asteroid> {
+     suspend fun getNearAsteroids(endData: String,startData: String): List<StartDate> {
         withContext(Dispatchers.IO) {
             try {
-                var response =
+                val response =
                     RetrofitInstance.getAsteroidsApi().getNearAsteroids( Credentials.apiKey,endData,startData)
-                        .body()?.nearEarthObjects?.startDate ?:listOf(
-                        Asteroid(1,"asdas","sad",2.0
-                            ,3.0,2.9,3.6,true)
-                    )
-                asteroidsList= response
+                        .body()?.near_earth_objects?.startDate
+                if (response!=null)
+                {
+                    asteroidsList= response 
+                    Log.d(TAG, "getNearAsteroids size is : ${response.size}")
+                }
+           
+                else{
 
-                Log.d(TAG, "getNearAsteroids id is : ${response.get(0).relativeVelocity}")
+                    Log.d(TAG, "getNearAsteroids: erorrrrrrr")
 
+                }
 
 
             } catch (e: Exception) {

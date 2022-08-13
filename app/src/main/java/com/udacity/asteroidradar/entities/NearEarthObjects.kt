@@ -6,6 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class NearEarthObjects(
-    @SerializedName("2015-09-08" ) var endDate: ArrayList<Asteroid>,
-    @SerializedName("2015-09-07" ) var startDate: ArrayList<Asteroid>
+    @SerializedName("end_date" ) var endDate: ArrayList<Asteroid>,
+    @SerializedName("start_date" ) var startDate: ArrayList<Asteroid>
 ) : Parcelable

@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.getNearAsteroids("2015-09-05","2015-09-6")
+           viewModel.getNearAsteroids("2015-09-05","2015-09-6")
 
         }
         return binding.root
