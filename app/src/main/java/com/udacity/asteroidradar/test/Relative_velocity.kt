@@ -1,4 +1,6 @@
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2022 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -11,10 +13,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Relative_velocity (
 
 	@SerializedName("kilometers_per_second") val kilometers_per_second : Double,
 	@SerializedName("kilometers_per_hour") val kilometers_per_hour : Double,
 	@SerializedName("miles_per_hour") val miles_per_hour : Double
-)
+) : Parcelable

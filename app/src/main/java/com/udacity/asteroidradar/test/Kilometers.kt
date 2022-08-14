@@ -1,4 +1,6 @@
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2022 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -11,9 +13,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Kilometers (
 
 	@SerializedName("estimated_diameter_min") val estimated_diameter_min : Double,
 	@SerializedName("estimated_diameter_max") val estimated_diameter_max : Double
-)
+) : Parcelable

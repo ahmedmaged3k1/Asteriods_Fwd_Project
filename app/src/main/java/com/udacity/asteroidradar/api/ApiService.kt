@@ -1,6 +1,6 @@
 package com.udacity.asteroidradar.api
 
-import AsteroidSample
+import com.udacity.asteroidradar.AsteroidSample
 import com.udacity.asteroidradar.entities.AsteroidList
 import retrofit2.Response
 import retrofit2.http.GET

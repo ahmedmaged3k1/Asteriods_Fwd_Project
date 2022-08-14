@@ -1,0 +1,58 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data >
+        <variable
+            name="asteroids"
+            type="com.udacity.asteroidradar.StartDate" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="307dp"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/absolute_magnitude"
+                android:text="@string/absolute_magnitude_title"
+                android:textColor="@color/default_text_color"
+                />
+
+            <TextView
+
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/asteroid"
+                android:textColor="@color/default_text_color"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="103dp"
+            android:layout_height="53dp"
+            android:src="@drawable/ic_status_normal"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/asd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

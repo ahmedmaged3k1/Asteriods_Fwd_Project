@@ -1,4 +1,13 @@
+package com.udacity.asteroidradar
+
+import CloseApproachData
+import Estimated_diameter
+import Links
+import Miss_distance
+import Relative_velocity
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2022 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -11,13 +20,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
+@Parcelize
+data class EndDate (
 
-data class Close_approach_data (
-
-	@SerializedName("close_approach_date") val close_approach_date : String,
-	@SerializedName("close_approach_date_full") val close_approach_date_full : String,
-	@SerializedName("epoch_date_close_approach") val epoch_date_close_approach : Long,
-	@SerializedName("relative_velocity") val relative_velocity : Relative_velocity,
-	@SerializedName("miss_distance") val miss_distance : Miss_distance,
-	@SerializedName("orbiting_body") val orbiting_body : String
-)
+    @SerializedName("links") val links : Links,
+    @SerializedName("id") val id : Int,
+    @SerializedName("neo_reference_id") val neo_reference_id : Int,
+    @SerializedName("name") val name : String,
+    @SerializedName("relative_velocity") val relative_velocity : Relative_velocity,
+    @SerializedName("miss_distance") val miss_distance : Miss_distance,
+    @SerializedName("nasa_jpl_url") val nasa_jpl_url : String,
+    @SerializedName("absolute_magnitude_h") val absolute_magnitude_h : Double,
+    @SerializedName("estimated_diameter") val estimated_diameter : Estimated_diameter,
+    @SerializedName("is_potentially_hazardous_asteroid") val is_potentially_hazardous_asteroid : Boolean,
+    @SerializedName("close_approach_data") val close_approach_data : List<CloseApproachData>,
+    @SerializedName("is_sentry_object") val is_sentry_object : Boolean
+) : Parcelable

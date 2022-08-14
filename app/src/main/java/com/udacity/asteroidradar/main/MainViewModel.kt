@@ -1,11 +1,11 @@
 package com.udacity.asteroidradar.main
 
-import AsteroidSample
-import StartDate
+
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.udacity.asteroidradar.StartDate
 import com.udacity.asteroidradar.entities.Asteroid
 import com.udacity.asteroidradar.network.Credentials
 import com.udacity.asteroidradar.network.RetrofitInstance
@@ -26,7 +26,7 @@ class MainViewModel : ViewModel() {
                 if (response!=null)
                 {
                     asteroidsList= response 
-                    Log.d(TAG, "getNearAsteroids size is : ${response.size}")
+                    Log.d(TAG, "getNearAsteroids size is : ${response.get(2).close_approach_data.get(0).relative_velocity.kilometers_per_hour}")
                 }
            
                 else{

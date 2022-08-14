@@ -1,4 +1,8 @@
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.udacity.asteroidradar.EndDate
+import com.udacity.asteroidradar.StartDate
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2022 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -11,9 +15,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Near_earth_objects (
 
-	@SerializedName("2015-09-06") val startDate : List<StartDate>,
-	@SerializedName("2015-09-07") val endDate: List<EndDate>
-)
+    @SerializedName("2015-09-06") val startDate : List<StartDate>,
+    @SerializedName("2015-09-07") val endDate: List<EndDate>
+) : Parcelable
