@@ -3,7 +3,7 @@
     <data >
         <variable
             name="asteroids"
-            type="com.udacity.asteroidradar.StartDate" />
+            type="com.udacity.asteroidradar.test.AsteroidPracable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

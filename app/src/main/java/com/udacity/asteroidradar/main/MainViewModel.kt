@@ -33,16 +33,17 @@ class MainViewModel @Inject constructor(private val doa: Dao) : ViewModel() {
             if (response != null) {
                 response.startDate.forEachIndexed { index, startDate ->
                     val asteroid = AsteroidPracable(
-                        startDate=startData,
-                       endDate = endData,
+                        startDate = startData,
+                        endDate = endData,
                         startDate.absolute_magnitude_h.toString(),
                         startDate.close_approach_data[0].relative_velocity.kilometers_per_hour.toString(),
                         startDate.estimated_diameter.kilometers.estimated_diameter_max.toString(),
                         startDate.close_approach_data[0].miss_distance.kilometers.toString(),
-                        startDate.is_potentially_hazardous_asteroid
+                        startDate.is_potentially_hazardous_asteroid,
+                        startDate.name
                     )
                     Log.d(TAG, "insertIntoRoom: ${asteroid.toString()}\n")
-                   doa.insertAllAsteroids(asteroid)
+                    doa.insertAllAsteroids(asteroid)
 
 
                 }
@@ -56,7 +57,7 @@ class MainViewModel @Inject constructor(private val doa: Dao) : ViewModel() {
         viewModelScope.launch {
             insertIntoRoom(endData, startData)
             Log.d(TAG, "getAsteroids: ${doa.getAllAsteroidsAscend().toString()}")
-           // asteroidsLive.postValue(doa.getAllAsteroidsAscend())
+            asteroidsLive.postValue(doa.getAllAsteroidsAscend())
 
         }
     }

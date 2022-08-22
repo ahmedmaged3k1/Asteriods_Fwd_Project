@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
         binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
         viewModel.getAsteroids("2015-09-05", "2015-09-6")
         viewModel.asteroidsLive.observe(viewLifecycleOwner) {
-           // asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
+            asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
 
 
         }

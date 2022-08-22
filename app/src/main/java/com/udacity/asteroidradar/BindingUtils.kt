@@ -17,65 +17,68 @@ fun ImageView.setImage(item: MainViewModel?) {
 }
 
 @BindingAdapter("maginituide")
-fun TextView.setMaginituideText(item: StartDate?) {
+fun TextView.setMaginituideText(item: AsteroidPracable?) {
     item.let {
-       text= item?.absolute_magnitude_h?.toString()
+        text = item?.magnituide?.toString()
 
     }
 }
+
 @BindingAdapter("maginituideDetail")
 fun TextView.setMaginituideDetailText(item: AsteroidPracable?) {
     item.let {
-        text= item?.magnituide
+        text = item?.magnituide
 
     }
 }
+
 @BindingAdapter("diamter")
 fun TextView.setDiamterText(item: AsteroidPracable?) {
     item.let {
-        text= item?.diamter
+        text = item?.diamter
 
     }
 }
+
 @BindingAdapter("velocity")
 fun TextView.setVelocityText(item: AsteroidPracable?) {
     item.let {
-        text= item?.velocity
+        text = item?.velocity
 
     }
 }
+
 @BindingAdapter("distance")
 fun TextView.setDistanceText(item: AsteroidPracable?) {
     item.let {
-        text= item?.distance
+        text = item?.distance
 
     }
 }
+
 @BindingAdapter("date")
 fun TextView.setDateText(item: AsteroidPracable?) {
     item.let {
-        text= item?.startDate
+        text = item?.startDate
 
     }
 }
 
 @BindingAdapter("name")
-fun TextView.setNameText(item: StartDate?) {
+fun TextView.setNameText(item: AsteroidPracable?) {
     item.let {
-        text= item?.name
+        text = item?.name
 
     }
 }
+
 @BindingAdapter("image")
-fun ImageView.setAsteroidImage(item: StartDate?) {
+fun ImageView.setAsteroidImage(item: AsteroidPracable?) {
     item.let {
         if (item != null) {
-            if (item.is_potentially_hazardous_asteroid)
-            {
+            if (item.imageFlag) {
                 setImageResource(R.drawable.ic_status_potentially_hazardous)
-            }
-            else
-            {
+            } else {
                 setImageResource(R.drawable.ic_status_normal)
 
             }
@@ -83,16 +86,14 @@ fun ImageView.setAsteroidImage(item: StartDate?) {
     }
 
 }
+
 @BindingAdapter("detailImage")
 fun ImageView.setDetailAsteroidImage(item: AsteroidPracable?) {
     item.let {
         if (item != null) {
-            if (item.imageFlag)
-            {
+            if (item.imageFlag) {
                 setImageResource(R.drawable.asteroid_hazardous)
-            }
-            else
-            {
+            } else {
                 setImageResource(R.drawable.asteroid_safe)
 
             }

@@ -10,7 +10,7 @@ import com.udacity.asteroidradar.test.AsteroidPracable
 
 @Database(
     entities = [AsteroidPracable::class, PictureOfDay::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 
