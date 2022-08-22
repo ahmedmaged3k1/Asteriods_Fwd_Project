@@ -11,6 +11,6 @@ interface ApiService {
     @GET("neo/rest/v1/feed")
     suspend fun getNearAsteroids(@Query("api_key")key: String,@Query("end_date")endDate: String,
                                  @Query("start_date")startDate: String): Response<AsteroidSample>
-    @GET("planetary/apod?")
+    @GET("planetary/apod")
     suspend fun getDayImage(@Query("api_key")key: String): Response<ImageOfDay>
 }

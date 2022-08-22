@@ -6,11 +6,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val asteroidsRecyclerViewAdapter = AsteroidsRecyclerViewAdapter()
     private val viewModel: MainViewModel by viewModels()
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,7 +24,9 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+    GlobalScope.launch{
         viewModel.getImage()
+    }
         setHasOptionsMenu(true)
 
         initializeRecyclerView()

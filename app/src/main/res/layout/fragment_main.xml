@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
+                android:src="@drawable/placeholder_picture_of_day"
                 android:scaleType="centerCrop"
                 app:imageDay="@{viewModel}"
                 app:srcCompat="@drawable/placeholder_picture_of_day"/>
