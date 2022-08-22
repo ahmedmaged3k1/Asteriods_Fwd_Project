@@ -30,7 +30,7 @@ class AsteroidsRecyclerViewAdapter :
     }
 
     override fun onBindViewHolder(holder: AsteroidsViewHolder, position: Int) {
-        holder.onBindItemHolder(holder, position)
+        holder.bind(getItem(position))
 
 
     }
@@ -38,8 +38,9 @@ class AsteroidsRecyclerViewAdapter :
     inner class AsteroidsViewHolder constructor(private val binding: AsteroidItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBindItemHolder(holder: AsteroidsViewHolder, position: Int) {
-            binding.absoluteMagnitude.text=getItem(position).absolute_magnitude_h.toString()
+        fun bind(item: StartDate?) {
+            binding.asteroids = item
+            binding.executePendingBindings()
 
         }
 

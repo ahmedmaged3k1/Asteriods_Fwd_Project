@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/absolute_magnitude"
-                android:text="@string/absolute_magnitude_title"
+                app:maginituide="@{asteroids}"
                 android:textColor="@color/default_text_color"
                 />
 
@@ -37,15 +37,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/asteroid"
+
                 android:textColor="@color/default_text_color"
-                />
+                app:name="@{asteroids}" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="103dp"
             android:layout_height="53dp"
             android:src="@drawable/ic_status_normal"
-
+            app:image="@{asteroids}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
