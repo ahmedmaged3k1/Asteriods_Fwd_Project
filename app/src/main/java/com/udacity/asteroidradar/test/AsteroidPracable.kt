@@ -16,6 +16,6 @@ data class AsteroidPracable(
     val distance: String,
     val imageFlag: Boolean,
     @PrimaryKey(autoGenerate = true)
-    var id :Int = 1
+    var id :Int = Math.random().toInt()
 
 ) : Parcelable

@@ -7,10 +7,7 @@ import androidx.fragment.app.viewModels
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -26,7 +23,7 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
-    GlobalScope.launch{
+    CoroutineScope(Dispatchers.IO).launch{
         viewModel.getImage()
     }
         setHasOptionsMenu(true)
@@ -48,7 +45,7 @@ class MainFragment : Fragment() {
         binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
         viewModel.getAsteroids("2015-09-05", "2015-09-6")
         viewModel.asteroidsLive.observe(viewLifecycleOwner) {
-            asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
+           // asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
 
 
         }

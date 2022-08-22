@@ -10,7 +10,7 @@ import com.udacity.asteroidradar.test.AsteroidPracable
 
 @Database(
     entities = [AsteroidPracable::class, PictureOfDay::class],
-    version = 0,
+    version = 3,
     exportSchema = false
 )
 
@@ -31,7 +31,7 @@ abstract class LocalDatabase : RoomDatabase() {
                         LocalDatabase::class.java,
                         "local_asteroids_database"
                     )
-                        .fallbackToDestructiveMigration()
+                        .fallbackToDestructiveMigration().allowMainThreadQueries()
                         .build()
                     INSTANCE = instance
                 }

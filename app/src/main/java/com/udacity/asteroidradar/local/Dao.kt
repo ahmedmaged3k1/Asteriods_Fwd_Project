@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.udacity.asteroidradar.PictureOfDay
-import com.udacity.asteroidradar.StartDate
 import com.udacity.asteroidradar.test.AsteroidPracable
 
 @Dao
@@ -35,6 +34,6 @@ interface Dao {
     suspend fun deletePictureOfDay()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllAsteroids(asteroids: List<AsteroidPracable>)
+    fun insertAllAsteroids(asteroids: AsteroidPracable)
 
 }
