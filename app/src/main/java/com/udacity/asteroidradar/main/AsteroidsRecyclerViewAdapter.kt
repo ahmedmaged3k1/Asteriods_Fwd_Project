@@ -54,6 +54,7 @@ class AsteroidsRecyclerViewAdapter :
                 Log.d(TAG, "message ${getItem(position).relative_velocity}: ")
                 val asteroid = AsteroidPracable(
                     getItem(position).close_approach_data[0].close_approach_date_full,
+                    endDate = "",
                     getItem(position).absolute_magnitude_h.toString(),
                     getItem(position).close_approach_data[0].relative_velocity.kilometers_per_hour.toString(),
                     getItem(position).estimated_diameter.kilometers.estimated_diameter_max.toString(),

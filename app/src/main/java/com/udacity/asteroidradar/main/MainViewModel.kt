@@ -9,14 +9,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.udacity.asteroidradar.AsteroidSample
 import com.udacity.asteroidradar.StartDate
+import com.udacity.asteroidradar.local.Dao
 import com.udacity.asteroidradar.network.Credentials
 import com.udacity.asteroidradar.network.RetrofitInstance
+import com.udacity.asteroidradar.test.AsteroidPracable
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
-    //listOf(Asteroid(1,"asdas","sad",2.0,3.0,2.9,3.6,true))
+@HiltViewModel
+class MainViewModel @Inject constructor(private val doa : Dao) : ViewModel() {
     private var asteroidsList = emptyList<StartDate>()
     private lateinit var asteroids: AsteroidSample
     val asteroidsLive = MutableLiveData<List<StartDate>>()

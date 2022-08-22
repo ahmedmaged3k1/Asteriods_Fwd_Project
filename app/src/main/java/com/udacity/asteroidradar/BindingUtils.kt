@@ -54,7 +54,7 @@ fun TextView.setDistanceText(item: AsteroidPracable?) {
 @BindingAdapter("date")
 fun TextView.setDateText(item: AsteroidPracable?) {
     item.let {
-        text= item?.date
+        text= item?.startDate
 
     }
 }
