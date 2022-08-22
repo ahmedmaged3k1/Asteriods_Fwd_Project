@@ -19,7 +19,7 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
-
+        viewModel.getImage()
         setHasOptionsMenu(true)
 
         initializeRecyclerView()
@@ -36,11 +36,11 @@ class MainFragment : Fragment() {
     }
 
     private fun initializeRecyclerView() {
-
+        binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
         viewModel.getAsteroids("2015-09-05", "2015-09-6")
         viewModel.asteroidsLive.observe(viewLifecycleOwner) {
             asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
-            binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
+
 
         }
 

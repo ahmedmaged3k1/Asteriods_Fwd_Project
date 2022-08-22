@@ -20,6 +20,7 @@ class MainViewModel : ViewModel() {
     private var asteroidsList = emptyList<StartDate>()
     private lateinit var asteroids: AsteroidSample
     val asteroidsLive = MutableLiveData<List<StartDate>>()
+    var image : String =""
 
 
 
@@ -69,6 +70,12 @@ class MainViewModel : ViewModel() {
             asteroidsLive.postValue(getNearAsteroids(endData, startData))
             Log.d(TAG, "getAsteroids view model : ${asteroidsList.size}")
         }
+    }
+     fun getImage(){
+        viewModelScope.launch {
+            image=   RetrofitInstance.getAsteroidsApi().getDayImage(Credentials.apiKey).body()?.url.toString()
+        }
+        
     }
 
 }

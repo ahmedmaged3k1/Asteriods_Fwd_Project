@@ -8,6 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/constraintLayout"
         android:background="@color/app_background"
         android:layout_height="wrap_content">
 
@@ -45,8 +46,8 @@
         <ImageView
             android:layout_width="103dp"
             android:layout_height="53dp"
-            android:src="@drawable/ic_status_normal"
             app:image="@{asteroids}"
+            android:id="@+id/image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
