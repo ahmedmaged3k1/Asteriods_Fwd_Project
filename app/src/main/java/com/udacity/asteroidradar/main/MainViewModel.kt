@@ -23,21 +23,21 @@ class MainViewModel @Inject constructor(private val doa: Dao) : ViewModel() {
     var image: String = ""
 
 
-    private fun insertIntoRoom(endData: String, startData: String) {
+    private fun insertIntoRoom(endData: String, startData: String)  {
         viewModelScope.launch {
-            val asteroidList = mutableListOf<AsteroidPracable>()
+
             val response =
                 RetrofitInstance.getAsteroidsApi()
                     .getNearAsteroids(Credentials.apiKey, endData, startData)
-                    .body()?.near_earth_objects
+                    .body()
             if (response != null) {
-                response.startDate.forEachIndexed { index, startDate ->
+                response.near_earth_objects.`2018-05-05`.forEachIndexed { index, startDate ->
                     val asteroid = AsteroidPracable(
                         startDate = startData,
                         endDate = endData,
                         startDate.absolute_magnitude_h.toString(),
-                        startDate.close_approach_data[0].relative_velocity.kilometers_per_hour.toString(),
-                        startDate.estimated_diameter.kilometers.estimated_diameter_max.toString(),
+                        startDate.close_approach_data[0].relative_velocity.kilometersPerHour.toString(),
+                        startDate.estimated_diameter.kilometers.estimatedDiameterMax.toString(),
                         startDate.close_approach_data[0].miss_distance.kilometers.toString(),
                         startDate.is_potentially_hazardous_asteroid,
                         startDate.name
@@ -48,8 +48,12 @@ class MainViewModel @Inject constructor(private val doa: Dao) : ViewModel() {
 
                 }
             }
+            Log.d(TAG, "insertIntoRoom: ${response.toString()}")
 
-        }
+
+            }
+
+
     }
 
     fun getAsteroids(endData: String, startData: String) {
@@ -58,6 +62,28 @@ class MainViewModel @Inject constructor(private val doa: Dao) : ViewModel() {
             insertIntoRoom(endData, startData)
             Log.d(TAG, "getAsteroids: ${doa.getAllAsteroidsAscend().toString()}")
             asteroidsLive.postValue(doa.getAllAsteroidsAscend())
+
+        }
+    }
+
+
+
+    fun getWeek(endData: String, startData: String) {
+
+        viewModelScope.launch {
+
+            Log.d(TAG, "getAsteroids: ${doa.getAllAsteroidsAscend().toString()}")
+            asteroidsLive.postValue(doa.getAsteroidsBySpecificDateOrder(startData, endData))
+
+        }
+    }
+
+    fun getSaved() {
+
+        viewModelScope.launch {
+
+            Log.d(TAG, "getAsteroids: ${doa.getAllAsteroidsAscend().toString()}")
+            asteroidsLive.postValue(doa.getAllAsteroids())
 
         }
     }

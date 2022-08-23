@@ -18,6 +18,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 @Parcelize
 data class Near_earth_objects (
 
-    @SerializedName("2015-09-06") val startDate : List<StartDate>,
-    @SerializedName("2015-09-07") val endDate: List<EndDate>
+    @SerializedName("start_date") val startDate : List<StartDate>,
+    @SerializedName("end_date") val endDate: List<EndDate>
 ) : Parcelable

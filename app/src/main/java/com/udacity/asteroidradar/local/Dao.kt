@@ -11,27 +11,17 @@ import com.udacity.asteroidradar.test.AsteroidPracable
 interface Dao {
 
 
-    @Query("SELECT * FROM AsteroidPracable WHERE startDate >= :startDate AND startDate <= :endDate ORDER BY startDate ASC")
+    @Query("SELECT * FROM AsteroidPracable WHERE startDate >= :startDate AND endDate <= :endDate ORDER BY startDate ASC")
     fun getAsteroidsBySpecificDateOrder(startDate: String, endDate: String): List<AsteroidPracable>
 
 
     @Query("SELECT * FROM AsteroidPracable ORDER BY startDate ASC")
     fun getAllAsteroidsAscend(): List<AsteroidPracable>
 
-
-    @Query("DELETE FROM AsteroidPracable WHERE startDate < :today")
-    fun deleteAllPreviousDayAsteroids(today: String): Int
-
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPicture(pictureOfDay: PictureOfDay)
-
-    @Query("SELECT * FROM PictureOfDay")
-    suspend fun getPicture(): PictureOfDay
+    @Query("SELECT * FROM AsteroidPracable ")
+    fun getAllAsteroids(): List<AsteroidPracable>
 
 
-    @Query("DELETE FROM PictureOfDay")
-    suspend fun deletePictureOfDay()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllAsteroids(asteroids: AsteroidPracable)

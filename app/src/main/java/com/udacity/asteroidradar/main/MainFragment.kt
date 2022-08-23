@@ -7,13 +7,17 @@ import androidx.fragment.app.viewModels
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val asteroidsRecyclerViewAdapter = AsteroidsRecyclerViewAdapter()
     private val viewModel: MainViewModel by viewModels()
+
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +27,11 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
-    CoroutineScope(Dispatchers.IO).launch{
-        viewModel.getImage()
-    }
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.getImage()
+        }
         setHasOptionsMenu(true)
+        binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
 
         initializeRecyclerView()
         return binding.root
@@ -38,12 +43,37 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.show_buy_menu -> initializeRecyclerView()
+            R.id.show_rent_menu -> saved()
+            R.id.show_all_menu -> week()
+
+        }
         return true
     }
 
     private fun initializeRecyclerView() {
-        binding.asteroidRecycler.adapter = asteroidsRecyclerViewAdapter
-        viewModel.getAsteroids("2015-09-05", "2015-09-6")
+        viewModel.getAsteroids("2018-5-6", "2018-5-5")
+        viewModel.asteroidsLive.observe(viewLifecycleOwner) {
+            asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
+
+
+        }
+
+
+    }
+    private fun saved() {
+        viewModel.getSaved()
+        viewModel.asteroidsLive.observe(viewLifecycleOwner) {
+            asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
+
+
+        }
+
+
+    }
+    private fun week() {
+        viewModel.getWeek("2016-09-05", "2016-09-06")
         viewModel.asteroidsLive.observe(viewLifecycleOwner) {
             asteroidsRecyclerViewAdapter.submitList(viewModel.asteroidsLive.value)
 
